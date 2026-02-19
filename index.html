@@ -3,174 +3,40 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>KodNest Premium Build System</title>
+  <title>Job Notification Tracker</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@400;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="design-system.css">
+  <link rel="stylesheet" href="navigation.css">
 </head>
 <body>
   <div class="app-container">
-    
-    <!-- TOP BAR -->
-    <header class="top-bar">
-      <div class="top-bar__project">KodNest Premium</div>
-      <div class="top-bar__progress">Step 1 / 4</div>
-      <div class="top-bar__status top-bar__status--in-progress">In Progress</div>
-    </header>
-
-    <!-- CONTEXT HEADER -->
-    <section class="context-header">
-      <h1 class="context-header__title">Design System Reference</h1>
-      <p class="context-header__subtitle">A calm, intentional design system for serious B2C products. Every component follows consistent spacing, typography, and interaction patterns.</p>
-    </section>
-
-    <!-- MAIN CONTENT -->
-    <main class="main-content">
-      
-      <!-- PRIMARY WORKSPACE -->
-      <div class="primary-workspace">
-        
-        <div class="card">
-          <h3 class="card__title">Typography Scale</h3>
-          <div class="card__content">
-            <h1>Heading 1 — Crimson Pro 48px</h1>
-            <h2>Heading 2 — Crimson Pro 36px</h2>
-            <h3>Heading 3 — Crimson Pro 24px</h3>
-            <h4>Heading 4 — Crimson Pro 20px</h4>
-            <p>Body text uses Inter at 16px with 1.7 line-height. Maximum width is constrained to 720px for optimal readability. This ensures text blocks never become too wide to scan comfortably.</p>
-            <p class="text-secondary">Secondary text is slightly smaller and uses a muted color for hierarchy.</p>
-          </div>
+    <nav class="main-nav">
+      <div class="main-nav__container">
+        <div class="main-nav__brand">Job Notification Tracker</div>
+        <div class="main-nav__links">
+          <a href="dashboard.html" class="main-nav__link">Dashboard</a>
+          <a href="saved.html" class="main-nav__link">Saved</a>
+          <a href="digest.html" class="main-nav__link">Digest</a>
+          <a href="settings.html" class="main-nav__link">Settings</a>
+          <a href="proof.html" class="main-nav__link">Proof</a>
         </div>
-
-        <div class="card">
-          <h3 class="card__title">Button Variants</h3>
-          <div class="card__content">
-            <div style="display: flex; gap: 16px; margin-bottom: 16px;">
-              <button class="btn btn--primary">Primary Action</button>
-              <button class="btn btn--secondary">Secondary Action</button>
-              <button class="btn btn--primary" disabled>Disabled</button>
-            </div>
-            <div style="display: flex; gap: 16px;">
-              <button class="btn btn--primary btn--small">Small Primary</button>
-              <button class="btn btn--secondary btn--small">Small Secondary</button>
-            </div>
-          </div>
-        </div>
-
-        <div class="card">
-          <h3 class="card__title">Form Elements</h3>
-          <div class="card__content">
-            <input type="text" class="input mb-sm" placeholder="Enter project name">
-            <textarea class="input" placeholder="Describe your requirements"></textarea>
-          </div>
-        </div>
-
-        <div class="card">
-          <h3 class="card__title">Message States</h3>
-          <div class="card__content">
-            <div class="success-message">
-              <div class="success-message__title">Build completed successfully</div>
-              <p>Your application has been deployed and is now live.</p>
-            </div>
-
-            <div class="warning-message">
-              <div class="warning-message__title">Review required</div>
-              <p>Please verify the configuration before proceeding to the next step.</p>
-            </div>
-
-            <div class="error-message">
-              <div class="error-message__title">Build failed</div>
-              <p class="error-message__description">The deployment process encountered an error with the database connection.</p>
-              <p class="error-message__solution">Check your environment variables and ensure the database URL is correct.</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="empty-state">
-          <h3 class="empty-state__title">No projects yet</h3>
-          <p class="empty-state__description">Create your first project to start building with KodNest Premium.</p>
-          <div class="empty-state__action">
-            <button class="btn btn--primary">Create Project</button>
-          </div>
-        </div>
-
+        <button class="main-nav__hamburger" aria-label="Toggle menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
       </div>
+    </nav>
 
-      <!-- SECONDARY PANEL -->
-      <aside class="secondary-panel">
-        
-        <div class="step-explanation">
-          <div class="step-explanation__title">Current Step</div>
-          <p class="step-explanation__text">Review the design system components and ensure they meet your requirements before proceeding.</p>
-        </div>
-
-        <div class="prompt-box">
-          <div class="prompt-box__label">Copyable Prompt</div>
-          <div class="prompt-box__content">Create a landing page using the KodNest Premium design system with a hero section, feature cards, and a call-to-action.</div>
-        </div>
-
-        <div class="action-buttons">
-          <button class="btn btn--secondary btn--small">Copy Prompt</button>
-          <button class="btn btn--primary btn--small">Build in Lovable</button>
-          <button class="btn btn--secondary btn--small">It Worked</button>
-          <button class="btn btn--secondary btn--small">Report Error</button>
-          <button class="btn btn--secondary btn--small">Add Screenshot</button>
-        </div>
-
-      </aside>
-
+    <main class="landing-hero">
+      <h1 class="landing-hero__headline">Stop Missing The Right Jobs.</h1>
+      <p class="landing-hero__subtext">Precision-matched job discovery delivered daily at 9AM.</p>
+      <a href="settings.html" class="btn btn--primary btn--large">Start Tracking</a>
     </main>
-
-    <!-- PROOF FOOTER -->
-    <footer class="proof-footer">
-      <div class="proof-footer__title">Proof of Completion</div>
-      <ul class="proof-checklist">
-        <li class="proof-checklist__item">
-          <div class="proof-checklist__checkbox"></div>
-          <span>UI Built</span>
-        </li>
-        <li class="proof-checklist__item">
-          <div class="proof-checklist__checkbox proof-checklist__checkbox--checked"></div>
-          <span>Logic Working</span>
-        </li>
-        <li class="proof-checklist__item">
-          <div class="proof-checklist__checkbox"></div>
-          <span>Test Passed</span>
-        </li>
-        <li class="proof-checklist__item">
-          <div class="proof-checklist__checkbox"></div>
-          <span>Deployed</span>
-        </li>
-      </ul>
-    </footer>
-
-    <!-- COLOR PALETTE -->
-    <section class="color-palette">
-      <div class="color-palette__header">
-        <div class="color-palette__title">Color System</div>
-        <div class="color-palette__count">4 colors used</div>
-      </div>
-      <div class="color-palette__grid">
-        <div class="color-swatch">
-          <div class="color-swatch__box" style="background-color: #F7F6F3; border: 1px solid #D4D2CC;"></div>
-          <div class="color-swatch__name">Background</div>
-        </div>
-        <div class="color-swatch">
-          <div class="color-swatch__box" style="background-color: #8B6914;"></div>
-          <div class="color-swatch__name">Warning</div>
-        </div>
-        <div class="color-swatch">
-          <div class="color-swatch__box" style="background-color: #8B0000;"></div>
-          <div class="color-swatch__name">Accent</div>
-        </div>
-        <div class="color-swatch">
-          <div class="color-swatch__box" style="background-color: #2D5016;"></div>
-          <div class="color-swatch__name">Success</div>
-        </div>
-      </div>
-    </section>
-
   </div>
+
+  <script src="navigation.js"></script>
 </body>
 </html>

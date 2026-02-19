@@ -14,6 +14,7 @@
   <div class="app-container">
     <nav class="main-nav">
       <div class="main-nav__container">
+        <div class="main-nav__brand">Job Notification Tracker</div>
         <div class="main-nav__links">
           <a href="dashboard.html" class="main-nav__link">Dashboard</a>
           <a href="saved.html" class="main-nav__link">Saved</a>
@@ -29,9 +30,60 @@
       </div>
     </nav>
 
-    <main class="placeholder-page">
-      <h1>Settings</h1>
-      <p class="text-secondary">This section will be built in the next step.</p>
+    <main class="page-content">
+      <div class="settings-container">
+        <h1>Job Preferences</h1>
+        <p class="text-secondary mb-lg">Configure your job search criteria to receive precision-matched opportunities.</p>
+
+        <div class="card">
+          <h3 class="card__title">Role Keywords</h3>
+          <div class="card__content">
+            <input type="text" class="input" placeholder="e.g. Software Engineer, Product Manager, Data Scientist">
+          </div>
+        </div>
+
+        <div class="card">
+          <h3 class="card__title">Preferred Locations</h3>
+          <div class="card__content">
+            <input type="text" class="input" placeholder="e.g. San Francisco, New York, Remote">
+          </div>
+        </div>
+
+        <div class="card">
+          <h3 class="card__title">Work Mode</h3>
+          <div class="card__content">
+            <div class="radio-group">
+              <label class="radio-option">
+                <input type="radio" name="mode" value="remote">
+                <span>Remote</span>
+              </label>
+              <label class="radio-option">
+                <input type="radio" name="mode" value="hybrid">
+                <span>Hybrid</span>
+              </label>
+              <label class="radio-option">
+                <input type="radio" name="mode" value="onsite">
+                <span>Onsite</span>
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3 class="card__title">Experience Level</h3>
+          <div class="card__content">
+            <select class="input">
+              <option value="">Select experience level</option>
+              <option value="entry">Entry Level (0-2 years)</option>
+              <option value="mid">Mid Level (3-5 years)</option>
+              <option value="senior">Senior Level (6-10 years)</option>
+              <option value="lead">Lead/Principal (10+ years)</option>
+            </select>
+          </div>
+        </div>
+
+        <button class="btn btn--primary btn--full-width">Save Preferences</button>
+      </div>
     </main>
   </div>
 
