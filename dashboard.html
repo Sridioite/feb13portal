@@ -9,6 +9,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@400;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="design-system.css">
   <link rel="stylesheet" href="navigation.css">
+  <link rel="stylesheet" href="jobs.css">
 </head>
 <body>
   <div class="app-container">
@@ -31,13 +32,77 @@
     </nav>
 
     <main class="page-content">
-      <div class="empty-state">
-        <h1 class="empty-state__title">No jobs yet.</h1>
-        <p class="empty-state__description">In the next step, you will load a realistic dataset.</p>
+      <h1 class="mb-sm">Job Dashboard</h1>
+      <p class="text-secondary mb-lg">Browse and discover precision-matched opportunities.</p>
+      
+      <div class="filter-bar">
+        <div class="filter-bar__row">
+          <div>
+            <label class="filter-bar__label">Search</label>
+            <input type="text" id="keywordSearch" class="input" placeholder="Search by title or company">
+          </div>
+          <div>
+            <label class="filter-bar__label">Location</label>
+            <select id="locationFilter" class="input">
+              <option value="all">All Locations</option>
+              <option value="Bangalore">Bangalore</option>
+              <option value="Pune">Pune</option>
+              <option value="Hyderabad">Hyderabad</option>
+              <option value="Chennai">Chennai</option>
+              <option value="Mumbai">Mumbai</option>
+              <option value="Noida">Noida</option>
+              <option value="Mysore">Mysore</option>
+            </select>
+          </div>
+          <div>
+            <label class="filter-bar__label">Mode</label>
+            <select id="modeFilter" class="input">
+              <option value="all">All Modes</option>
+              <option value="Remote">Remote</option>
+              <option value="Hybrid">Hybrid</option>
+              <option value="Onsite">Onsite</option>
+            </select>
+          </div>
+          <div>
+            <label class="filter-bar__label">Experience</label>
+            <select id="experienceFilter" class="input">
+              <option value="all">All Levels</option>
+              <option value="Fresher">Fresher</option>
+              <option value="0-1">0-1 years</option>
+              <option value="1-3">1-3 years</option>
+              <option value="3-5">3-5 years</option>
+            </select>
+          </div>
+          <div>
+            <label class="filter-bar__label">Source</label>
+            <select id="sourceFilter" class="input">
+              <option value="all">All Sources</option>
+              <option value="LinkedIn">LinkedIn</option>
+              <option value="Naukri">Naukri</option>
+              <option value="Indeed">Indeed</option>
+            </select>
+          </div>
+          <div>
+            <label class="filter-bar__label">Sort By</label>
+            <select id="sortFilter" class="input">
+              <option value="latest">Latest First</option>
+              <option value="oldest">Oldest First</option>
+            </select>
+          </div>
+        </div>
       </div>
+      
+      <div class="jobs-grid" id="jobsContainer"></div>
     </main>
+    
+    <!-- Job Details Modal -->
+    <div id="jobModal" class="modal">
+      <div class="modal__content" id="modalContent"></div>
+    </div>
   </div>
 
   <script src="navigation.js"></script>
+  <script src="jobs-data.js"></script>
+  <script src="app.js"></script>
 </body>
 </html>

@@ -9,6 +9,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@400;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="design-system.css">
   <link rel="stylesheet" href="navigation.css">
+  <link rel="stylesheet" href="jobs.css">
 </head>
 <body>
   <div class="app-container">
@@ -31,13 +32,20 @@
     </nav>
 
     <main class="page-content">
-      <div class="empty-state">
-        <h1 class="empty-state__title">No saved jobs yet.</h1>
-        <p class="empty-state__description">Jobs you save will appear here for easy access.</p>
-      </div>
+      <h1 class="mb-sm">Saved Jobs</h1>
+      <p class="text-secondary mb-lg">Your bookmarked opportunities.</p>
+      
+      <div class="jobs-grid" id="savedJobsContainer"></div>
     </main>
+    
+    <!-- Job Details Modal -->
+    <div id="jobModal" class="modal">
+      <div class="modal__content" id="modalContent"></div>
+    </div>
   </div>
 
   <script src="navigation.js"></script>
+  <script src="jobs-data.js"></script>
+  <script src="app.js"></script>
 </body>
 </html>
