@@ -50,6 +50,16 @@
             <input type="text" id="keywordSearch" class="input" placeholder="Search by title or company">
           </div>
           <div>
+            <label class="filter-bar__label">Status</label>
+            <select id="statusFilter" class="input">
+              <option value="all">All Status</option>
+              <option value="Not Applied">Not Applied</option>
+              <option value="Applied">Applied</option>
+              <option value="Rejected">Rejected</option>
+              <option value="Selected">Selected</option>
+            </select>
+          </div>
+          <div>
             <label class="filter-bar__label">Location</label>
             <select id="locationFilter" class="input">
               <option value="all">All Locations</option>
@@ -100,11 +110,12 @@
             </select>
           </div>
         </div>
-        <div style="margin-top: 16px; padding-top: 16px; border-top: 1px solid var(--color-border);">
+        <div style="margin-top: 16px; padding-top: 16px; border-top: 1px solid var(--color-border); display: flex; justify-content: space-between; align-items: center;">
           <label class="checkbox-option" style="display: flex; align-items: center; gap: 8px; cursor: pointer;">
             <input type="checkbox" id="showOnlyMatches">
             <span style="font-size: 15px; font-weight: 500;">Show only jobs above my threshold</span>
           </label>
+          <button class="btn btn--secondary btn--small" onclick="clearAllFilters()">Clear Filters</button>
         </div>
       </div>
       

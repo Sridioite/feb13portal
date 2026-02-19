@@ -6,6 +6,83 @@ function getPreferences() {
   return prefs ? JSON.parse(prefs) : null;
 }
 
+// Job Status Management
+function getJobStatus(jobId) {
+  const statuses = localStorage.getItem('jobTrackerStatus');
+  const statusMap = statuses ? JSON.parse(statuses) : {};
+  return statusMap[jobId] || 'Not Applied';
+}
+
+function setJobStatus(jobId, status) {
+  const statuses = localStorage.getItem('jobTrackerStatus');
+  const statusMap = statuses ? JSON.parse(statuses) : {};
+  statusMap[jobId] = status;
+  localStorage.setItem('jobTrackerStatus', JSON.stringify(statusMap));
+  
+  // Add to status history
+  addStatusHistory(jobId, status);
+  
+  // Show toast notification
+  showToast(`Status updated: ${status}`);
+}
+
+function addStatusHistory(jobId, status) {
+  const history = localStorage.getItem('jobTrackerStatusHistory');
+  const historyArray = history ? JSON.parse(history) : [];
+  
+  const job = jobsData.find(j => j.id === jobId);
+  if (!job) return;
+  
+  historyArray.unshift({
+    jobId,
+    title: job.title,
+    company: job.company,
+    status,
+    date: new Date().toISOString()
+  });
+  
+  // Keep only last 20 updates
+  if (historyArray.length > 20) {
+    historyArray.pop();
+  }
+  
+  localStorage.setItem('jobTrackerStatusHistory', JSON.stringify(historyArray));
+}
+
+function getStatusHistory() {
+  const history = localStorage.getItem('jobTrackerStatusHistory');
+  return history ? JSON.parse(history) : [];
+}
+
+// Show toast notification
+function showToast(message) {
+  const toast = document.createElement('div');
+  toast.className = 'toast';
+  toast.textContent = message;
+  document.body.appendChild(toast);
+  
+  setTimeout(() => {
+    toast.classList.add('toast--show');
+  }, 10);
+  
+  setTimeout(() => {
+    toast.classList.remove('toast--show');
+    setTimeout(() => {
+      document.body.removeChild(toast);
+    }, 300);
+  }, 3000);
+}
+
+// Get status badge class
+function getStatusBadgeClass(status) {
+  switch(status) {
+    case 'Applied': return 'status-badge--applied';
+    case 'Rejected': return 'status-badge--rejected';
+    case 'Selected': return 'status-badge--selected';
+    default: return 'status-badge--neutral';
+  }
+}
+
 // Calculate match score for a job based on user preferences
 function calculateMatchScore(job, preferences) {
   if (!preferences) return 0;
@@ -132,6 +209,10 @@ function createJobCard(job, showUnsave = false) {
   
   const saveAction = showUnsave ? `unsaveJobAndRefresh(${job.id})` : `toggleSaveJob(${job.id})`;
   
+  // Get job status
+  const currentStatus = getJobStatus(job.id);
+  const statusBadgeClass = getStatusBadgeClass(currentStatus);
+  
   return `
     <div class="job-card" data-job-id="${job.id}">
       <div class="job-card__header">
@@ -153,6 +234,17 @@ function createJobCard(job, showUnsave = false) {
       
       <div class="job-card__salary">${job.salaryRange}</div>
       
+      <div class="job-card__status">
+        <label class="job-card__status-label">Status:</label>
+        <div class="status-badge ${statusBadgeClass}">${currentStatus}</div>
+        <select class="status-select" onchange="changeJobStatus(${job.id}, this.value)">
+          <option value="Not Applied" ${currentStatus === 'Not Applied' ? 'selected' : ''}>Not Applied</option>
+          <option value="Applied" ${currentStatus === 'Applied' ? 'selected' : ''}>Applied</option>
+          <option value="Rejected" ${currentStatus === 'Rejected' ? 'selected' : ''}>Rejected</option>
+          <option value="Selected" ${currentStatus === 'Selected' ? 'selected' : ''}>Selected</option>
+        </select>
+      </div>
+      
       <div class="job-card__footer">
         <span class="job-card__posted">${formatPostedDays(job.postedDaysAgo)}</span>
         <div class="job-card__actions">
@@ -163,6 +255,18 @@ function createJobCard(job, showUnsave = false) {
       </div>
     </div>
   `;
+}
+
+// Change job status
+function changeJobStatus(jobId, status) {
+  setJobStatus(jobId, status);
+  
+  // Refresh the current page
+  if (window.location.pathname.includes('dashboard')) {
+    renderDashboard();
+  } else if (window.location.pathname.includes('saved')) {
+    renderSavedJobs();
+  }
 }
 
 // View job details in modal
@@ -251,6 +355,11 @@ function filterJobs(jobs, filters) {
     filtered = filtered.filter(job => job.matchScore >= preferences.minMatchScore);
   }
   
+  // Status filter
+  if (filters.status && filters.status !== 'all') {
+    filtered = filtered.filter(job => getJobStatus(job.id) === filters.status);
+  }
+  
   // Keyword search
   if (filters.keyword) {
     const keyword = filters.keyword.toLowerCase();
@@ -310,7 +419,8 @@ function getCurrentFilters() {
     experience: document.getElementById('experienceFilter')?.value || 'all',
     source: document.getElementById('sourceFilter')?.value || 'all',
     sort: document.getElementById('sortFilter')?.value || 'latest',
-    showOnlyMatches: document.getElementById('showOnlyMatches')?.checked || false
+    showOnlyMatches: document.getElementById('showOnlyMatches')?.checked || false,
+    status: document.getElementById('statusFilter')?.value || 'all'
   };
 }
 
@@ -344,6 +454,40 @@ function renderDashboard() {
   }
   
   container.innerHTML = filteredJobs.map(job => createJobCard(job)).join('');
+}
+
+// Clear all filters
+function clearAllFilters() {
+  // Reset all filter inputs
+  const keywordSearch = document.getElementById('keywordSearch');
+  if (keywordSearch) keywordSearch.value = '';
+  
+  const statusFilter = document.getElementById('statusFilter');
+  if (statusFilter) statusFilter.value = 'all';
+  
+  const locationFilter = document.getElementById('locationFilter');
+  if (locationFilter) locationFilter.value = 'all';
+  
+  const modeFilter = document.getElementById('modeFilter');
+  if (modeFilter) modeFilter.value = 'all';
+  
+  const experienceFilter = document.getElementById('experienceFilter');
+  if (experienceFilter) experienceFilter.value = 'all';
+  
+  const sourceFilter = document.getElementById('sourceFilter');
+  if (sourceFilter) sourceFilter.value = 'all';
+  
+  const sortFilter = document.getElementById('sortFilter');
+  if (sortFilter) sortFilter.value = 'latest';
+  
+  const showOnlyMatches = document.getElementById('showOnlyMatches');
+  if (showOnlyMatches) showOnlyMatches.checked = false;
+  
+  // Re-render dashboard
+  renderDashboard();
+  
+  // Show toast
+  showToast('All filters cleared');
 }
 
 // Render saved jobs
@@ -382,6 +526,7 @@ if (document.getElementById('jobsContainer')) {
   document.getElementById('sourceFilter')?.addEventListener('change', renderDashboard);
   document.getElementById('sortFilter')?.addEventListener('change', renderDashboard);
   document.getElementById('showOnlyMatches')?.addEventListener('change', renderDashboard);
+  document.getElementById('statusFilter')?.addEventListener('change', renderDashboard);
 }
 
 // Initialize saved jobs page

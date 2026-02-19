@@ -9,6 +9,8 @@
   <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@400;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="design-system.css">
   <link rel="stylesheet" href="navigation.css">
+  <link rel="stylesheet" href="jobs.css">
+  <link rel="stylesheet" href="digest.css">
 </head>
 <body>
   <div class="app-container">
@@ -31,13 +33,39 @@
     </nav>
 
     <main class="page-content">
-      <div class="empty-state">
-        <h1 class="empty-state__title">No digest available.</h1>
-        <p class="empty-state__description">Your daily job digest will be delivered at 9AM.</p>
+      <h1 class="mb-sm">Daily Digest</h1>
+      <p class="text-secondary mb-lg">Your personalized job recommendations delivered at 9AM.</p>
+      
+      <!-- No Preferences Banner -->
+      <div id="noPreferencesBanner" class="error-message" style="display: none;">
+        <div class="error-message__title">Set preferences to generate a personalized digest.</div>
+        <p class="error-message__description">Configure your job preferences to receive tailored recommendations.</p>
+        <a href="settings.html" class="btn btn--primary btn--small">Go to Settings</a>
       </div>
+      
+      <!-- Generate Button -->
+      <div style="margin-bottom: 24px;">
+        <button id="generateButton" class="btn btn--primary" onclick="generateDigest()">
+          Generate Today's 9AM Digest (Simulated)
+        </button>
+      </div>
+      
+      <!-- Recent Status Updates -->
+      <div id="statusHistorySection" style="margin-bottom: 32px;"></div>
+      
+      <!-- Digest Container -->
+      <div id="digestContainer"></div>
     </main>
+    
+    <!-- Job Details Modal -->
+    <div id="jobModal" class="modal">
+      <div class="modal__content" id="modalContent"></div>
+    </div>
   </div>
 
   <script src="navigation.js"></script>
+  <script src="jobs-data.js"></script>
+  <script src="app.js"></script>
+  <script src="digest.js"></script>
 </body>
 </html>

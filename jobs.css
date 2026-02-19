@@ -11,7 +11,7 @@
 
 .filter-bar__row {
   display: grid;
-  grid-template-columns: 2fr 1fr 1fr 1fr 1fr 1fr;
+  grid-template-columns: 2fr 1fr 1fr 1fr 1fr 1fr 1fr;
   gap: var(--space-sm);
   margin-bottom: var(--space-sm);
 }
@@ -369,4 +369,109 @@
   background: var(--color-accent);
   cursor: pointer;
   border: none;
+}
+
+/* Job Status */
+.job-card__status {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  padding: var(--space-sm) 0;
+  border-top: 1px solid var(--color-border);
+  margin-top: var(--space-sm);
+}
+
+.job-card__status-label {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--color-text-secondary);
+}
+
+.status-badge {
+  font-size: 12px;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: 3px;
+  text-transform: uppercase;
+}
+
+.status-badge--neutral {
+  background-color: var(--color-border);
+  color: var(--color-text-primary);
+}
+
+.status-badge--applied {
+  background-color: #2164F3;
+  color: white;
+}
+
+.status-badge--rejected {
+  background-color: var(--color-accent);
+  color: white;
+}
+
+.status-badge--selected {
+  background-color: var(--color-success);
+  color: white;
+}
+
+.status-select {
+  padding: 6px 10px;
+  font-size: 13px;
+  border: 1px solid var(--color-border);
+  border-radius: 3px;
+  background-color: var(--color-surface);
+  color: var(--color-text-primary);
+  cursor: pointer;
+  transition: border-color var(--transition-standard);
+}
+
+.status-select:hover {
+  border-color: var(--color-accent);
+}
+
+.status-select:focus {
+  outline: none;
+  border-color: var(--color-accent);
+}
+
+/* Toast Notification */
+.toast {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  background-color: var(--color-text-primary);
+  color: white;
+  padding: 16px 24px;
+  border-radius: 4px;
+  font-size: 14px;
+  font-weight: 500;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  z-index: 10000;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.3s ease;
+}
+
+.toast--show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Mobile Responsive Updates */
+@media (max-width: 768px) {
+  .job-card__status {
+    flex-wrap: wrap;
+  }
+  
+  .status-select {
+    flex: 1;
+    min-width: 150px;
+  }
+  
+  .toast {
+    left: 16px;
+    right: 16px;
+    bottom: 16px;
+  }
 }

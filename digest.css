@@ -1,0 +1,247 @@
+/* Digest Email Layout */
+
+.digest-email {
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 4px;
+  max-width: 800px;
+  margin: 0 auto;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+.digest-email__header {
+  padding: var(--space-lg);
+  border-bottom: 2px solid var(--color-accent);
+  text-align: center;
+}
+
+.digest-email__header h1 {
+  font-family: var(--font-serif);
+  font-size: 32px;
+  margin-bottom: var(--space-xs);
+  color: var(--color-text-primary);
+}
+
+.digest-email__date {
+  font-size: 16px;
+  color: var(--color-text-secondary);
+  margin: 0;
+}
+
+.digest-email__body {
+  padding: var(--space-lg);
+}
+
+.digest-email__footer {
+  padding: var(--space-lg);
+  border-top: 1px solid var(--color-border);
+  text-align: center;
+  background-color: var(--color-background);
+}
+
+.digest-email__footer p {
+  margin: 0 0 var(--space-xs) 0;
+  font-size: 14px;
+  color: var(--color-text-secondary);
+}
+
+.digest-email__note {
+  font-size: 12px !important;
+  font-style: italic;
+  color: var(--color-text-secondary);
+  opacity: 0.7;
+}
+
+.digest-email__actions {
+  padding: var(--space-md) var(--space-lg);
+  display: flex;
+  gap: var(--space-sm);
+  justify-content: center;
+  border-top: 1px solid var(--color-border);
+}
+
+/* Digest Job Card */
+.digest-job {
+  background-color: var(--color-background);
+  border: 1px solid var(--color-border);
+  border-radius: 4px;
+  padding: var(--space-md);
+  margin-bottom: var(--space-md);
+  transition: all var(--transition-standard);
+}
+
+.digest-job:hover {
+  border-color: var(--color-accent);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+.digest-job:last-child {
+  margin-bottom: 0;
+}
+
+.digest-job__header {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-sm);
+  margin-bottom: var(--space-sm);
+}
+
+.digest-job__number {
+  flex-shrink: 0;
+  width: 32px;
+  height: 32px;
+  background-color: var(--color-accent);
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.digest-job__content {
+  flex: 1;
+}
+
+.digest-job__title {
+  font-family: var(--font-serif);
+  font-size: 20px;
+  margin: 0 0 4px 0;
+  color: var(--color-text-primary);
+}
+
+.digest-job__company {
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--color-text-secondary);
+}
+
+.digest-job__details {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+  margin-bottom: var(--space-sm);
+  font-size: 14px;
+  color: var(--color-text-secondary);
+  padding-left: 44px;
+}
+
+.digest-job__actions {
+  display: flex;
+  gap: var(--space-xs);
+  padding-left: 44px;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .digest-email__header h1 {
+    font-size: 24px;
+  }
+  
+  .digest-email__actions {
+    flex-direction: column;
+  }
+  
+  .digest-email__actions .btn {
+    width: 100%;
+  }
+  
+  .digest-job__header {
+    flex-wrap: wrap;
+  }
+  
+  .digest-job__details,
+  .digest-job__actions {
+    padding-left: 0;
+  }
+  
+  .digest-job__actions {
+    flex-direction: column;
+  }
+  
+  .digest-job__actions .btn {
+    width: 100%;
+  }
+}
+
+/* Status History */
+.status-history {
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 4px;
+  padding: var(--space-md);
+  margin-bottom: var(--space-lg);
+}
+
+.status-history__title {
+  font-family: var(--font-serif);
+  font-size: 20px;
+  margin-bottom: var(--space-sm);
+  color: var(--color-text-primary);
+}
+
+.status-history__list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+.status-history-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--space-sm);
+  background-color: var(--color-background);
+  border: 1px solid var(--color-border);
+  border-radius: 4px;
+  transition: all var(--transition-standard);
+}
+
+.status-history-item:hover {
+  border-color: var(--color-accent);
+}
+
+.status-history-item__content {
+  flex: 1;
+}
+
+.status-history-item__title {
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--color-text-primary);
+  margin-bottom: 2px;
+}
+
+.status-history-item__company {
+  font-size: 13px;
+  color: var(--color-text-secondary);
+}
+
+.status-history-item__meta {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 4px;
+}
+
+.status-history-item__date {
+  font-size: 12px;
+  color: var(--color-text-secondary);
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .status-history-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-xs);
+  }
+  
+  .status-history-item__meta {
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+    justify-content: space-between;
+  }
+}
