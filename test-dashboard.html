@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Test Dashboard</title>
+</head>
+<body>
+  <h1>Testing Jobs Data</h1>
+  <div id="test-output"></div>
+
+  <script src="jobs-data.js"></script>
+  <script>
+    console.log('Jobs data loaded:', typeof jobsData);
+    console.log('Number of jobs:', jobsData ? jobsData.length : 'undefined');
+    
+    const output = document.getElementById('test-output');
+    if (typeof jobsData !== 'undefined' && jobsData.length > 0) {
+      output.innerHTML = `
+        <p>✅ Jobs data loaded successfully!</p>
+        <p>Total jobs: ${jobsData.length}</p>
+        <p>First job: ${jobsData[0].title} at ${jobsData[0].company}</p>
+      `;
+    } else {
+      output.innerHTML = '<p>❌ Jobs data not loaded</p>';
+    }
+  </script>
+</body>
+</html>

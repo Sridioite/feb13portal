@@ -35,6 +35,14 @@
       <h1 class="mb-sm">Job Dashboard</h1>
       <p class="text-secondary mb-lg">Browse and discover precision-matched opportunities.</p>
       
+      <!-- Preferences Banner -->
+      <div id="preferencesBanner" class="warning-message" style="display: none;">
+        <div class="warning-message__title">Set your preferences to activate intelligent matching.</div>
+        <p style="margin: 8px 0 0 0;">
+          <a href="settings.html" class="btn btn--primary btn--small">Configure Preferences</a>
+        </p>
+      </div>
+      
       <div class="filter-bar">
         <div class="filter-bar__row">
           <div>
@@ -86,9 +94,17 @@
             <label class="filter-bar__label">Sort By</label>
             <select id="sortFilter" class="input">
               <option value="latest">Latest First</option>
+              <option value="match">Match Score</option>
+              <option value="salary">Salary</option>
               <option value="oldest">Oldest First</option>
             </select>
           </div>
+        </div>
+        <div style="margin-top: 16px; padding-top: 16px; border-top: 1px solid var(--color-border);">
+          <label class="checkbox-option" style="display: flex; align-items: center; gap: 8px; cursor: pointer;">
+            <input type="checkbox" id="showOnlyMatches">
+            <span style="font-size: 15px; font-weight: 500;">Show only jobs above my threshold</span>
+          </label>
         </div>
       </div>
       
