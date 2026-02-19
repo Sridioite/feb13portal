@@ -4,7 +4,6 @@
 function getProofData() {
   const data = localStorage.getItem('jobTrackerProofData');
   return data ? JSON.parse(data) : {
-    lovableLink: '',
     githubLink: '',
     deployedLink: ''
   };
@@ -50,11 +49,9 @@ function isValidUrl(string) {
 // Check if all links are provided and valid
 function areAllLinksValid() {
   const data = getProofData();
-  return (
-    data.lovableLink && isValidUrl(data.lovableLink) &&
-    data.githubLink && isValidUrl(data.githubLink) &&
-    data.deployedLink && isValidUrl(data.deployedLink)
-  );
+  const githubValid = data.githubLink && isValidUrl(data.githubLink) && data.githubLink.includes('github.com');
+  const deployedValid = data.deployedLink && isValidUrl(data.deployedLink);
+  return githubValid && deployedValid;
 }
 
 // Check if project can be shipped
@@ -78,12 +75,31 @@ function getProjectStatus() {
 
 // Validate and save
 function validateAndSave() {
-  const lovableLink = document.getElementById('lovableLink').value.trim();
   const githubLink = document.getElementById('githubLink').value.trim();
   const deployedLink = document.getElementById('deployedLink').value.trim();
   
+  // Validate GitHub link
+  const githubError = document.getElementById('githubError');
+  if (githubLink && !isValidUrl(githubLink)) {
+    githubError.textContent = '⚠️ Invalid URL format. Must start with http:// or https://';
+    githubError.style.display = 'block';
+  } else if (githubLink && !githubLink.includes('github.com')) {
+    githubError.textContent = '⚠️ Please enter a valid GitHub repository URL';
+    githubError.style.display = 'block';
+  } else {
+    githubError.style.display = 'none';
+  }
+  
+  // Validate deployed link
+  const deployedError = document.getElementById('deployedError');
+  if (deployedLink && !isValidUrl(deployedLink)) {
+    deployedError.textContent = '⚠️ Invalid URL format. Must start with http:// or https://';
+    deployedError.style.display = 'block';
+  } else {
+    deployedError.style.display = 'none';
+  }
+  
   const data = {
-    lovableLink,
     githubLink,
     deployedLink
   };
@@ -167,7 +183,7 @@ function updateValidationStatus(testsPass, linksValid) {
   }
   
   if (!linksValid) {
-    messages.push('❌ Provide all 3 valid URLs');
+    messages.push('❌ Provide both valid URLs (GitHub + Deployed)');
   } else {
     messages.push('✅ All links provided');
   }
@@ -194,9 +210,6 @@ function copyFinalSubmission() {
   const data = getProofData();
   
   const submission = `Job Notification Tracker — Final Submission
-
-Lovable Project:
-${data.lovableLink}
 
 GitHub Repository:
 ${data.githubLink}
@@ -227,7 +240,6 @@ function clearProofData() {
   if (confirm('Are you sure you want to clear all proof data?')) {
     localStorage.removeItem('jobTrackerProofData');
     
-    document.getElementById('lovableLink').value = '';
     document.getElementById('githubLink').value = '';
     document.getElementById('deployedLink').value = '';
     
@@ -241,7 +253,6 @@ document.addEventListener('DOMContentLoaded', () => {
   const data = getProofData();
   
   // Populate inputs
-  document.getElementById('lovableLink').value = data.lovableLink || '';
   document.getElementById('githubLink').value = data.githubLink || '';
   document.getElementById('deployedLink').value = data.deployedLink || '';
   

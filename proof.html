@@ -118,18 +118,11 @@
           <h2 class="proof-section__title">B) Artifact Collection</h2>
           
           <div class="card">
-            <h3 class="card__title">Lovable Project Link</h3>
-            <div class="card__content">
-              <input type="url" id="lovableLink" class="input" placeholder="https://lovable.dev/projects/..." onchange="validateAndSave()">
-              <p class="input-hint">Enter your Lovable project URL</p>
-            </div>
-          </div>
-
-          <div class="card">
             <h3 class="card__title">GitHub Repository Link</h3>
             <div class="card__content">
               <input type="url" id="githubLink" class="input" placeholder="https://github.com/username/repo" onchange="validateAndSave()">
               <p class="input-hint">Enter your GitHub repository URL</p>
+              <p id="githubError" class="input-error" style="display: none;"></p>
             </div>
           </div>
 
@@ -138,6 +131,7 @@
             <div class="card__content">
               <input type="url" id="deployedLink" class="input" placeholder="https://your-app.vercel.app" onchange="validateAndSave()">
               <p class="input-hint">Enter your Vercel or deployment URL</p>
+              <p id="deployedError" class="input-error" style="display: none;"></p>
             </div>
           </div>
         </div>
