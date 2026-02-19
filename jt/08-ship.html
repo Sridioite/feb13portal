@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ship - Job Notification Tracker</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@400;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../design-system.css">
+  <link rel="stylesheet" href="../navigation.css">
+  <link rel="stylesheet" href="test-checklist.css">
+</head>
+<body>
+  <div class="app-container">
+    <nav class="main-nav">
+      <div class="main-nav__container">
+        <div class="main-nav__brand">Job Notification Tracker</div>
+        <div class="main-nav__links">
+          <a href="../dashboard.html" class="main-nav__link">Dashboard</a>
+          <a href="../saved.html" class="main-nav__link">Saved</a>
+          <a href="../digest.html" class="main-nav__link">Digest</a>
+          <a href="../settings.html" class="main-nav__link">Settings</a>
+          <a href="../proof.html" class="main-nav__link">Proof</a>
+          <a href="07-test.html" class="main-nav__link">Test</a>
+        </div>
+        <button class="main-nav__hamburger" aria-label="Toggle menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </nav>
+
+    <main class="page-content">
+      <div class="ship-container" id="shipContainer">
+        <!-- Content will be loaded by JavaScript -->
+      </div>
+    </main>
+  </div>
+
+  <script src="../navigation.js"></script>
+  <script src="ship.js"></script>
+</body>
+</html>

@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Test Checklist - Job Notification Tracker</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@400;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../design-system.css">
+  <link rel="stylesheet" href="../navigation.css">
+  <link rel="stylesheet" href="test-checklist.css">
+</head>
+<body>
+  <div class="app-container">
+    <nav class="main-nav">
+      <div class="main-nav__container">
+        <div class="main-nav__brand">Job Notification Tracker</div>
+        <div class="main-nav__links">
+          <a href="../dashboard.html" class="main-nav__link">Dashboard</a>
+          <a href="../saved.html" class="main-nav__link">Saved</a>
+          <a href="../digest.html" class="main-nav__link">Digest</a>
+          <a href="../settings.html" class="main-nav__link">Settings</a>
+          <a href="../proof.html" class="main-nav__link">Proof</a>
+          <a href="07-test.html" class="main-nav__link main-nav__link--active">Test</a>
+        </div>
+        <button class="main-nav__hamburger" aria-label="Toggle menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </nav>
+
+    <main class="page-content">
+      <div class="test-container">
+        <h1>Pre-Ship Test Checklist</h1>
+        <p class="text-secondary mb-lg">Verify all features work correctly before shipping.</p>
+
+        <!-- Test Summary -->
+        <div id="testSummary" class="test-summary">
+          <div class="test-summary__count">
+            <span class="test-summary__label">Tests Passed:</span>
+            <span class="test-summary__value" id="testCount">0 / 10</span>
+          </div>
+          <div id="testWarning" class="test-summary__warning" style="display: none;">
+            ⚠️ Resolve all issues before shipping.
+          </div>
+        </div>
+
+        <!-- Test Checklist -->
+        <div class="test-checklist">
+          <div class="test-item">
+            <label class="test-item__label">
+              <input type="checkbox" class="test-item__checkbox" data-test="preferences-persist" onchange="updateTestStatus()">
+              <span class="test-item__text">Preferences persist after refresh</span>
+            </label>
+            <button class="test-item__tooltip" onclick="showTooltip('Set preferences in /settings, refresh page, verify they remain')">?</button>
+          </div>
+
+          <div class="test-item">
+            <label class="test-item__label">
+              <input type="checkbox" class="test-item__checkbox" data-test="match-score" onchange="updateTestStatus()">
+              <span class="test-item__text">Match score calculates correctly</span>
+            </label>
+            <button class="test-item__tooltip" onclick="showTooltip('Set preferences, check job cards show match % badges with correct colors')">?</button>
+          </div>
+
+          <div class="test-item">
+            <label class="test-item__label">
+              <input type="checkbox" class="test-item__checkbox" data-test="show-matches" onchange="updateTestStatus()">
+              <span class="test-item__text">"Show only matches" toggle works</span>
+            </label>
+            <button class="test-item__tooltip" onclick="showTooltip('Enable toggle on dashboard, verify only jobs above threshold show')">?</button>
+          </div>
+
+          <div class="test-item">
+            <label class="test-item__label">
+              <input type="checkbox" class="test-item__checkbox" data-test="save-persist" onchange="updateTestStatus()">
+              <span class="test-item__text">Save job persists after refresh</span>
+            </label>
+            <button class="test-item__tooltip" onclick="showTooltip('Save a job, refresh page, check it appears in /saved')">?</button>
+          </div>
+
+          <div class="test-item">
+            <label class="test-item__label">
+              <input type="checkbox" class="test-item__checkbox" data-test="apply-new-tab" onchange="updateTestStatus()">
+              <span class="test-item__text">Apply opens in new tab</span>
+            </label>
+            <button class="test-item__tooltip" onclick="showTooltip('Click Apply button on any job, verify it opens in new tab')">?</button>
+          </div>
+
+          <div class="test-item">
+            <label class="test-item__label">
+              <input type="checkbox" class="test-item__checkbox" data-test="status-persist" onchange="updateTestStatus()">
+              <span class="test-item__text">Status update persists after refresh</span>
+            </label>
+            <button class="test-item__tooltip" onclick="showTooltip('Change job status to Applied, refresh page, verify status remains')">?</button>
+          </div>
+
+          <div class="test-item">
+            <label class="test-item__label">
+              <input type="checkbox" class="test-item__checkbox" data-test="status-filter" onchange="updateTestStatus()">
+              <span class="test-item__text">Status filter works correctly</span>
+            </label>
+            <button class="test-item__tooltip" onclick="showTooltip('Mark jobs as Applied, filter by Applied, verify only those show')">?</button>
+          </div>
+
+          <div class="test-item">
+            <label class="test-item__label">
+              <input type="checkbox" class="test-item__checkbox" data-test="digest-top10" onchange="updateTestStatus()">
+              <span class="test-item__text">Digest generates top 10 by score</span>
+            </label>
+            <button class="test-item__tooltip" onclick="showTooltip('Generate digest, verify 10 jobs appear sorted by match score')">?</button>
+          </div>
+
+          <div class="test-item">
+            <label class="test-item__label">
+              <input type="checkbox" class="test-item__checkbox" data-test="digest-persist" onchange="updateTestStatus()">
+              <span class="test-item__text">Digest persists for the day</span>
+            </label>
+            <button class="test-item__tooltip" onclick="showTooltip('Generate digest, refresh page, verify same digest loads')">?</button>
+          </div>
+
+          <div class="test-item">
+            <label class="test-item__label">
+              <input type="checkbox" class="test-item__checkbox" data-test="no-errors" onchange="updateTestStatus()">
+              <span class="test-item__text">No console errors on main pages</span>
+            </label>
+            <button class="test-item__tooltip" onclick="showTooltip('Open console (F12), visit all pages, verify no red errors')">?</button>
+          </div>
+        </div>
+
+        <!-- Actions -->
+        <div class="test-actions">
+          <button class="btn btn--secondary" onclick="resetTestStatus()">Reset Test Status</button>
+          <a href="08-ship.html" id="shipButton" class="btn btn--primary" style="pointer-events: none; opacity: 0.5;">
+            Proceed to Ship →
+          </a>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script src="../navigation.js"></script>
+  <script src="test-checklist.js"></script>
+</body>
+</html>

@@ -1,0 +1,219 @@
+/* Proof Page Styles */
+
+.proof-container {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.proof-container h1 {
+  margin-bottom: var(--space-xs);
+}
+
+/* Project Status */
+.project-status {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  margin-bottom: var(--space-lg);
+  padding: var(--space-md);
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 4px;
+}
+
+.project-status__label {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--color-text-secondary);
+}
+
+.project-status__badge {
+  padding: 6px 16px;
+  border-radius: 4px;
+  font-size: 14px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.project-status__badge--not-started {
+  background-color: var(--color-border);
+  color: var(--color-text-secondary);
+}
+
+.project-status__badge--progress {
+  background-color: #2164F3;
+  color: white;
+}
+
+.project-status__badge--shipped {
+  background-color: var(--color-success);
+  color: white;
+}
+
+/* Shipped Message */
+.shipped-message {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  padding: var(--space-md);
+  background-color: #F0F9F4;
+  border: 1px solid var(--color-success);
+  border-radius: 4px;
+  margin-bottom: var(--space-lg);
+}
+
+.shipped-message__icon {
+  width: 32px;
+  height: 32px;
+  background-color: var(--color-success);
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  font-weight: 600;
+  flex-shrink: 0;
+}
+
+.shipped-message__text {
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--color-success);
+}
+
+/* Proof Section */
+.proof-section {
+  margin-bottom: var(--space-xl);
+}
+
+.proof-section__title {
+  font-family: var(--font-serif);
+  font-size: 24px;
+  margin-bottom: var(--space-md);
+  color: var(--color-text-primary);
+}
+
+/* Step List */
+.step-list {
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 4px;
+  padding: var(--space-md);
+}
+
+.step-item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  padding: var(--space-sm) 0;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.step-item:last-child {
+  border-bottom: none;
+}
+
+.step-item__number {
+  width: 32px;
+  height: 32px;
+  background-color: var(--color-background);
+  border: 2px solid var(--color-border);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  font-size: 14px;
+  color: var(--color-text-primary);
+  flex-shrink: 0;
+}
+
+.step-item__content {
+  flex: 1;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.step-item__title {
+  font-size: 15px;
+  color: var(--color-text-primary);
+}
+
+.step-item__status {
+  font-size: 13px;
+  font-weight: 600;
+  padding: 4px 12px;
+  border-radius: 3px;
+  text-transform: uppercase;
+}
+
+.step-item__status--completed {
+  background-color: var(--color-success);
+  color: white;
+}
+
+.step-item__status--pending {
+  background-color: var(--color-border);
+  color: var(--color-text-secondary);
+}
+
+/* Input Hint */
+.input-hint {
+  font-size: 13px;
+  color: var(--color-text-secondary);
+  margin-top: var(--space-xs);
+  margin-bottom: 0;
+}
+
+/* Validation Status */
+.validation-status {
+  padding: var(--space-md);
+  border-radius: 4px;
+  margin-bottom: var(--space-lg);
+  font-size: 14px;
+  line-height: 1.8;
+}
+
+.validation-status--warning {
+  background-color: #FFF3CD;
+  border: 1px solid var(--color-warning);
+  color: var(--color-warning);
+}
+
+.validation-status--success {
+  background-color: #F0F9F4;
+  border: 1px solid var(--color-success);
+  color: var(--color-success);
+}
+
+/* Proof Actions */
+.proof-actions {
+  display: flex;
+  gap: var(--space-sm);
+  justify-content: space-between;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .project-status {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .step-item__content {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-xs);
+  }
+  
+  .proof-actions {
+    flex-direction: column;
+  }
+  
+  .proof-actions .btn {
+    width: 100%;
+  }
+}
