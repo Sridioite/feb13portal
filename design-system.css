@@ -8,9 +8,9 @@
    ============================================ */
 :root {
   /* Core Colors */
-  --color-background: #F7F6F3;
+  --color-background: #E8E7F3;
   --color-text-primary: #111111;
-  --color-accent: #8B0000;
+  --color-accent: #5B4FE8;
   --color-success: #2D5016;
   --color-warning: #8B6914;
   
@@ -230,12 +230,12 @@ p {
 }
 
 .proof-checklist__checkbox:hover {
-  border-color: var(--color-accent);
+  border-color: #5B4FE8;
 }
 
 .proof-checklist__checkbox--checked {
-  background-color: var(--color-accent);
-  border-color: var(--color-accent);
+  background-color: #5B4FE8;
+  border-color: #5B4FE8;
   position: relative;
 }
 
@@ -295,8 +295,8 @@ p {
 }
 
 .btn--primary:hover {
-  background-color: #6D0000;
-  border-color: #6D0000;
+  background-color: #4A3FD8;
+  border-color: #4A3FD8;
 }
 
 .btn--secondary {

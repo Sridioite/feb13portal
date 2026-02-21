@@ -82,6 +82,31 @@
   height: 20px;
   cursor: pointer;
   flex-shrink: 0;
+  accent-color: #5B4FE8;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  border: 2px solid #D4D2CC;
+  border-radius: 3px;
+  background-color: white;
+  position: relative;
+  transition: all 0.15s ease-in-out;
+}
+
+.test-item__checkbox:checked {
+  background-color: #5B4FE8;
+  border-color: #5B4FE8;
+}
+
+.test-item__checkbox:checked::after {
+  content: '✓';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-size: 14px;
+  font-weight: bold;
 }
 
 .test-item__text {

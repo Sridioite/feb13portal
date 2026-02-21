@@ -83,7 +83,7 @@
 }
 
 .job-card__source--naukri {
-  background-color: #6C63FF;
+  background-color: #5B4FE8;
   color: white;
 }
 
@@ -340,6 +340,31 @@
   width: 18px;
   height: 18px;
   cursor: pointer;
+  accent-color: #5B4FE8;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  border: 2px solid #D4D2CC;
+  border-radius: 3px;
+  background-color: white;
+  position: relative;
+  transition: all 0.15s ease-in-out;
+}
+
+.checkbox-option input[type="checkbox"]:checked {
+  background-color: #5B4FE8;
+  border-color: #5B4FE8;
+}
+
+.checkbox-option input[type="checkbox"]:checked::after {
+  content: '✓';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-size: 12px;
+  font-weight: bold;
 }
 
 /* Slider */
@@ -401,12 +426,12 @@
 }
 
 .status-badge--applied {
-  background-color: #2164F3;
+  background-color: #5B4FE8;
   color: white;
 }
 
 .status-badge--rejected {
-  background-color: var(--color-accent);
+  background-color: #DC3545;
   color: white;
 }
 
